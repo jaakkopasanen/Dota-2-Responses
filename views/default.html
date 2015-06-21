@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>Responses</title>
+	<style>
+		html, body {
+			font-size: 14px;
+			margin: 0;
+			font-family: sans-serif;
+		}
+		button, button:focus, button:active {
+			border: 0;
+			border-radius: 3px;
+			min-width: 56px;
+			min-height: 56px;
+			outline: none;
+			will-change: transform;
+		}
+		button:hover {
+			cursor: pointer;
+		}
+		input[type="text"], input[type="text"]:hover, input[type="text"]:focus, input[type="text"]:active {
+			outline: none;
+		}
+		.container {
+			position: relative;
+			width: 100%;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		#toolbar {
+			position: fixed;
+			top: 8px; bottom: auto;
+			left: 0; right: 0;
+			text-align: center;
+			color: white;
+		}
+		table {
+			border-spacing: 0;
+			border-collapse: separate;
+			margin: 0 12px;
+			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+		}
+		td {
+			padding: 0;
+		}
+		td.input {
+			width: 100%;
+		}
+		td.button {
+			perspective: 100px;
+		}
+		#toolbar input[type="text"] {
+			padding-left: 12px;
+			background-color: white;
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			height: 28px;
+			border: 1px solid rgba(0, 0, 0, 0.26);
+			width: 100%;
+			box-sizing: border-box;
+			min-height: 56px;
+		}
+		#toolbar button {
+			background-color: rgb(44, 75, 224);
+			color: white;
+			font-weight: bold;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+		#toolbar button:active {
+			background-color: rgb(41, 60, 161);
+		}
+		#content {
+			background-color: white;
+			margin-top: 72px;
+		}
+		.list-item {
+			position: relative;
+			padding: 16px 12px;
+			border-bottom: 1px solid rgba(44, 75, 224, 0.12);
+			overflow: hidden;
+		}
+		.list-item:hover {
+			cursor: pointer;
+			border-bottom: 1px solid rgba(44, 75, 224, 0.54);
+		}
+		.progress {
+			position: absolute;
+			top: auto; bottom: 0;
+			left: 0; right: 0;
+			height: 3px;
+			background-color: rgb(44, 75, 224);
+			-webkit-transform: translateX(-100%);
+			-moz-transform: translateX(-100%);
+			-ms-transform: translateX(-100%);
+			transform: translateX(-100%);
+			-webkit-transition-property: none;
+			-moz-transition-property: none;
+			-ms-transition-property: none;
+			transition-property: none;
+		}
+		.progress.play {
+			-webkit-transition-property: transform;
+			-moz-transition-property: transform;
+			transition-property: transform;
+			-ms-transition-property: transform;
+			transition-timing-function: linear;
+			-webkit-transition-timing-function: linear;
+			-moz-transition-timing-function: linear;
+			-ms-transition-timing-function: linear;
+			-webkit-transform: translateX(0);
+			-moz-transform: translateX(0);
+			-ms-transform: translateX(0);
+			transform: translateX(0);
+		}
+		.unit {
+			color: #32a6ff;
+		}
+		.unit:hover {
+			font-weight: bold;
+		}
+		h1, h2 {
+			margin-bottom: 0;
+		}
+		.help-button-wrapper {
+			position: fixed;
+			top: auto; bottom: 0;
+			left: 0; right: 0;
+			height: 0;
+			overflow: visible;
+		}
+		button.help {
+			position: absolute;
+			top: auto; bottom: 12px;
+			left: auto; right: 12px;
+			background-color: rgb(44, 75, 224);
+			color: white;
+			font-weight: bold;
+			font-size: 28px;
+			border-radius: 50%;
+			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+			transform: none;
+			font-family: 'Comic Sans MS', 'Brush Script MT', Cursive, sans-serif;
+			line-height: 1;
+		}
+		button.help:hover {
+			background-color: rgb(29, 51, 151);
+		}
+		button.help:active {
+			-webkit-transform: translateY(2px) scale(0.97);
+			-moz-transform: translateY(2px) scale(0.97);
+			-o-transform: translateY(2px) scale(0.97);
+			-ms-transform: translateY(2px) scale(0.97);
+			transform: translateY(2px) scale(0.97);
+		}
+		#help {
+			display: none;
+			position: fixed;
+			top: auto; bottom: 80px;
+			left: 0; right: 0;
+			color: white;
+		}
+		#help.show {
+			display: block;
+		}
+		#help .content {
+			position: relative;
+			box-sizing: border-box;
+			margin: 0 12px;
+			padding: 16px;
+			background-color: rgba(0, 0, 0, 0.83);
+			border-radius: 4px;
+		}
+		#help .content > h1 {
+			margin-top: 0;
+		}
+		#help .content > h2 {
+			margin-top: 20px;
+			margin-bottom: 6px;
+		}
+		#help .content > p, #help .content > ul {
+			margin: 0;
+		}
+		#help .content > .close {
+			position: absolute;
+			top: 0; bottom: auto;
+			left: auto; right: 0;
+			font-size: 28px;
+			font-weight: bold;
+			background-color: transparent;
+			color: white;
+			padding: 0;
+			min-width: 48px;
+			min-height: 48px;
+			font-family: 'Comic Sans MS', 'Brush Script MT', Cursive, sans-serif;
+			line-height: 1;
+		}
+		#help .content > .close:hover {
+			background-color: rgba(255, 255, 255, 0.12);
+		}
+	</style>
+</head>
+<body>
+<div id="content" class="container">
+	{% block content %}{% endblock %}
+</div>
+<audio id="audio"></audio>
+<div id="toolbar">
+	<form id="form" class="container">
+		<table>
+			<tr>
+				<td class="input"><input type="text" id="search" placeholder="What do you wish to say?" autofocus></td>
+				<td class="button"><button type="submit">Search</button></td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+<div id="help">
+	<div class="container">
+		<div class="content">
+			<h1>Dota 2 responses</h1>
+			<p>
+				Dota 2 responses is a search engine for hero and announcer responses in Dota 2.
+			</p>
+			<h2>How to</h2>
+			<ul>
+				<li>Search response by it's content. For example: "good day".</li>
+				<li>Click list item to play it</li>
+				<li>Click hero name to filter results</li>
+				<li>Browser URL is updated when playing responses, you can share link by simply copy pasting the browser URL</li>
+			</ul>
+			<h2>Legal nonsense</h2>
+			<p>
+				All responses on this site is owned by Valve Corporation. Gaben is love! Gaben is life!
+			</p>
+			<button type="button" class="close" onclick="toggleHelp(event)">x</button>
+		</div>
+	</div>
+</div>
+<div class="help-button-wrapper container">
+	<div class="container">
+		<button type="button" class="help" onclick="toggleHelp(event)">?</button>
+	</div>
+</div>
+
+<script>
+	// Fastclick.js
+	!function e(t,n,r){function i(o,s){if(!n[o]){if(!t[o]){var l="function"==typeof require&&require;if(!s&&l)return l(o,!0);if(a)return a(o,!0);var c=new Error("Cannot find module '"+o+"'");throw c.code="MODULE_NOT_FOUND",c}var u=n[o]={exports:{}};t[o][0].call(u.exports,function(e){var n=t[o][1][e];return i(n?n:e)},u,u.exports,e,t,n,r)}return n[o].exports}for(var a="function"==typeof require&&require,o=0;o<r.length;o++)i(r[o]);return i}({1:[function(e,t,n){!function(){"use strict";function e(t,n){function i(e,t){return function(){return e.apply(t,arguments)}}var a;if(n=n||{},this.trackingClick=!1,this.trackingClickStart=0,this.targetElement=null,this.touchStartX=0,this.touchStartY=0,this.lastTouchIdentifier=0,this.touchBoundary=n.touchBoundary||10,this.layer=t,this.tapDelay=n.tapDelay||200,this.tapTimeout=n.tapTimeout||700,!e.notNeeded(t)){for(var o=["onMouse","onClick","onTouchStart","onTouchMove","onTouchEnd","onTouchCancel"],s=this,l=0,c=o.length;c>l;l++)s[o[l]]=i(s[o[l]],s);r&&(t.addEventListener("mouseover",this.onMouse,!0),t.addEventListener("mousedown",this.onMouse,!0),t.addEventListener("mouseup",this.onMouse,!0)),t.addEventListener("click",this.onClick,!0),t.addEventListener("touchstart",this.onTouchStart,!1),t.addEventListener("touchmove",this.onTouchMove,!1),t.addEventListener("touchend",this.onTouchEnd,!1),t.addEventListener("touchcancel",this.onTouchCancel,!1),Event.prototype.stopImmediatePropagation||(t.removeEventListener=function(e,n,r){var i=Node.prototype.removeEventListener;"click"===e?i.call(t,e,n.hijacked||n,r):i.call(t,e,n,r)},t.addEventListener=function(e,n,r){var i=Node.prototype.addEventListener;"click"===e?i.call(t,e,n.hijacked||(n.hijacked=function(e){e.propagationStopped||n(e)}),r):i.call(t,e,n,r)}),"function"==typeof t.onclick&&(a=t.onclick,t.addEventListener("click",function(e){a(e)},!1),t.onclick=null)}}var n=navigator.userAgent.indexOf("Windows Phone")>=0,r=navigator.userAgent.indexOf("Android")>0&&!n,i=/iP(ad|hone|od)/.test(navigator.userAgent)&&!n,a=i&&/OS 4_\d(_\d)?/.test(navigator.userAgent),o=i&&/OS [6-7]_\d/.test(navigator.userAgent),s=navigator.userAgent.indexOf("BB10")>0;e.prototype.needsClick=function(e){switch(e.nodeName.toLowerCase()){case"button":case"select":case"textarea":if(e.disabled)return!0;break;case"input":if(i&&"file"===e.type||e.disabled)return!0;break;case"label":case"iframe":case"video":return!0}return/\bneedsclick\b/.test(e.className)},e.prototype.needsFocus=function(e){switch(e.nodeName.toLowerCase()){case"textarea":return!0;case"select":return!r;case"input":switch(e.type){case"button":case"checkbox":case"file":case"image":case"radio":case"submit":return!1}return!e.disabled&&!e.readOnly;default:return/\bneedsfocus\b/.test(e.className)}},e.prototype.sendClick=function(e,t){var n,r;document.activeElement&&document.activeElement!==e&&document.activeElement.blur(),r=t.changedTouches[0],n=document.createEvent("MouseEvents"),n.initMouseEvent(this.determineEventType(e),!0,!0,window,1,r.screenX,r.screenY,r.clientX,r.clientY,!1,!1,!1,!1,0,null),n.forwardedTouchEvent=!0,e.dispatchEvent(n)},e.prototype.determineEventType=function(e){return r&&"select"===e.tagName.toLowerCase()?"mousedown":"click"},e.prototype.focus=function(e){var t;i&&e.setSelectionRange&&0!==e.type.indexOf("date")&&"time"!==e.type&&"month"!==e.type?(t=e.value.length,e.setSelectionRange(t,t)):e.focus()},e.prototype.updateScrollParent=function(e){var t,n;if(t=e.fastClickScrollParent,!t||!t.contains(e)){n=e;do{if(n.scrollHeight>n.offsetHeight){t=n,e.fastClickScrollParent=n;break}n=n.parentElement}while(n)}t&&(t.fastClickLastScrollTop=t.scrollTop)},e.prototype.getTargetElementFromEventTarget=function(e){return e.nodeType===Node.TEXT_NODE?e.parentNode:e},e.prototype.onTouchStart=function(e){var t,n,r;if(e.targetTouches.length>1)return!0;if(t=this.getTargetElementFromEventTarget(e.target),n=e.targetTouches[0],i){if(r=window.getSelection(),r.rangeCount&&!r.isCollapsed)return!0;if(!a){if(n.identifier&&n.identifier===this.lastTouchIdentifier)return e.preventDefault(),!1;this.lastTouchIdentifier=n.identifier,this.updateScrollParent(t)}}return this.trackingClick=!0,this.trackingClickStart=e.timeStamp,this.targetElement=t,this.touchStartX=n.pageX,this.touchStartY=n.pageY,e.timeStamp-this.lastClickTime<this.tapDelay&&e.preventDefault(),!0},e.prototype.touchHasMoved=function(e){var t=e.changedTouches[0],n=this.touchBoundary;return Math.abs(t.pageX-this.touchStartX)>n||Math.abs(t.pageY-this.touchStartY)>n?!0:!1},e.prototype.onTouchMove=function(e){return this.trackingClick?((this.targetElement!==this.getTargetElementFromEventTarget(e.target)||this.touchHasMoved(e))&&(this.trackingClick=!1,this.targetElement=null),!0):!0},e.prototype.findControl=function(e){return void 0!==e.control?e.control:e.htmlFor?document.getElementById(e.htmlFor):e.querySelector("button, input:not([type=hidden]), keygen, meter, output, progress, select, textarea")},e.prototype.onTouchEnd=function(e){var t,n,s,l,c,u=this.targetElement;if(!this.trackingClick)return!0;if(e.timeStamp-this.lastClickTime<this.tapDelay)return this.cancelNextClick=!0,!0;if(e.timeStamp-this.trackingClickStart>this.tapTimeout)return!0;if(this.cancelNextClick=!1,this.lastClickTime=e.timeStamp,n=this.trackingClickStart,this.trackingClick=!1,this.trackingClickStart=0,o&&(c=e.changedTouches[0],u=document.elementFromPoint(c.pageX-window.pageXOffset,c.pageY-window.pageYOffset)||u,u.fastClickScrollParent=this.targetElement.fastClickScrollParent),s=u.tagName.toLowerCase(),"label"===s){if(t=this.findControl(u)){if(this.focus(u),r)return!1;u=t}}else if(this.needsFocus(u))return e.timeStamp-n>100||i&&window.top!==window&&"input"===s?(this.targetElement=null,!1):(this.focus(u),this.sendClick(u,e),i&&"select"===s||(this.targetElement=null,e.preventDefault()),!1);return i&&!a&&(l=u.fastClickScrollParent,l&&l.fastClickLastScrollTop!==l.scrollTop)?!0:(this.needsClick(u)||(e.preventDefault(),this.sendClick(u,e)),!1)},e.prototype.onTouchCancel=function(){this.trackingClick=!1,this.targetElement=null},e.prototype.onMouse=function(e){return this.targetElement?e.forwardedTouchEvent?!0:e.cancelable&&(!this.needsClick(this.targetElement)||this.cancelNextClick)?(e.stopImmediatePropagation?e.stopImmediatePropagation():e.propagationStopped=!0,e.stopPropagation(),e.preventDefault(),!1):!0:!0},e.prototype.onClick=function(e){var t;return this.trackingClick?(this.targetElement=null,this.trackingClick=!1,!0):"submit"===e.target.type&&0===e.detail?!0:(t=this.onMouse(e),t||(this.targetElement=null),t)},e.prototype.destroy=function(){var e=this.layer;r&&(e.removeEventListener("mouseover",this.onMouse,!0),e.removeEventListener("mousedown",this.onMouse,!0),e.removeEventListener("mouseup",this.onMouse,!0)),e.removeEventListener("click",this.onClick,!0),e.removeEventListener("touchstart",this.onTouchStart,!1),e.removeEventListener("touchmove",this.onTouchMove,!1),e.removeEventListener("touchend",this.onTouchEnd,!1),e.removeEventListener("touchcancel",this.onTouchCancel,!1)},e.notNeeded=function(e){var t,n,i,a;if("undefined"==typeof window.ontouchstart)return!0;if(n=+(/Chrome\/([0-9]+)/.exec(navigator.userAgent)||[,0])[1]){if(!r)return!0;if(t=document.querySelector("meta[name=viewport]")){if(-1!==t.content.indexOf("user-scalable=no"))return!0;if(n>31&&document.documentElement.scrollWidth<=window.outerWidth)return!0}}if(s&&(i=navigator.userAgent.match(/Version\/([0-9]*)\.([0-9]*)/),i[1]>=10&&i[2]>=3&&(t=document.querySelector("meta[name=viewport]")))){if(-1!==t.content.indexOf("user-scalable=no"))return!0;if(document.documentElement.scrollWidth<=window.outerWidth)return!0}return"none"===e.style.msTouchAction||"manipulation"===e.style.touchAction?!0:(a=+(/Firefox\/([0-9]+)/.exec(navigator.userAgent)||[,0])[1],a>=27&&(t=document.querySelector("meta[name=viewport]"),t&&(-1!==t.content.indexOf("user-scalable=no")||document.documentElement.scrollWidth<=window.outerWidth))?!0:"none"===e.style.touchAction||"manipulation"===e.style.touchAction?!0:!1)},e.attach=function(t,n){return new e(t,n)},"function"==typeof define&&"object"==typeof define.amd&&define.amd?define(function(){return e}):"undefined"!=typeof t&&t.exports?(t.exports=e.attach,t.exports.FastClick=e):window.FastClick=e}()},{}],2:[function(e,t,n){window.Origami={fastclick:e("./bower_components/fastclick/lib/fastclick.js")}},{"./bower_components/fastclick/lib/fastclick.js":1}]},{},[2]);;(function() {var triggered = false;function trigger(){if (!triggered) { triggered = true; document.dispatchEvent(new CustomEvent('o.load'))}};window.addEventListener('load',trigger);if (document.readyState==='ready') trigger();}());(function() {var triggered = false;function trigger(){if (!triggered) { triggered = true; document.dispatchEvent(new CustomEvent('o.DOMContentLoaded'))}};document.addEventListener('DOMContentLoaded',trigger);if (document.readyState==='ready') trigger();window.addEventListener('load',trigger);}())
+</script>
+
+<script>
+	// TODO: help
+
+	/**
+	 * Initialize fast click
+	 */
+	var attachFastClick = Origami.fastclick;
+	attachFastClick(document.body);
+
+	var input = document.getElementById('search'),
+		form = document.getElementById('form'),
+		content = document.getElementById('content'),
+		loadedMetadata = false,
+		startedPlaying = false,
+		httpRequest = new XMLHttpRequest();
+
+
+
+	/**
+	 * HTTP Request ready state change event listener
+	 * Replace contents of content with received html
+	 */
+	httpRequest.onreadystatechange = function (){
+		if(httpRequest.readyState === 4){
+			if(httpRequest.status === 200){
+				content.innerHTML = httpRequest.responseText;
+				document.body.scrollTop = 0;
+				autoplay();
+			}
+		}
+	};
+
+	/**
+	 * Init search with server
+	 */
+	function search () {
+		event.preventDefault();
+		input.blur();
+		httpRequest.open('GET', '/search/' + input.value);
+		httpRequest.send();
+		window.history.replaceState('', '', '/');
+	}
+
+	/**
+	 * Do search when user submits search form
+	 */
+	form.addEventListener('submit', function (){
+		search();
+	});
+
+
+
+	var audio = document.getElementById('audio');
+	var progress;
+	/**
+	 * Play response
+	 * @param url URL of audio
+	 * @param el DOM element
+	 * @param id ID of response
+	 */
+	function play(url, el, id) {
+		loadedMetadata = false;
+		startedPlaying = false;
+		audio.src = url;
+		if(progress) {
+			progress.className = 'progress';
+		}
+		progress = el.querySelector('.progress');
+		audio.volume = 1;
+		audio.play();
+		window.history.replaceState('', '', '/' + id); // Replace URL without reloading page
+		document.title = el.querySelector('.content').innerHTML; // Set content as document title
+	}
+
+	/**
+	 * Autoplay single response
+	 * Does not play if none or multiple responses exist
+	 */
+	function autoplay(){
+		if(document.getElementsByClassName('list-item').length === 1){
+			var response = document.getElementsByClassName('list-item')[0];
+			response.onclick.apply(response);
+		}
+	}
+	autoplay();
+
+
+
+	/**
+	 * Animate progress bar
+	 * Metadata has to be loaded and audio has to be playing
+	 */
+	function animateProgress(){
+		if(loadedMetadata && startedPlaying){
+			progress.style.setProperty('transition-duration', audio.duration + 's');
+			progress.className = 'progress play';
+		}
+	}
+
+	/**
+	 * Try to animate progress bar when metadata gets loaded or audio starts playing
+	 */
+	audio.addEventListener('loadedmetadata', function (){
+		loadedMetadata = true;
+		animateProgress();
+	});
+	audio.addEventListener('play', function () {
+		startedPlaying = true;
+		animateProgress();
+	});
+
+
+
+	/**
+	 * Add unit filter @:Hero to beginning of search query, remove all existing filters
+	 * @param unit Name of the unit
+	 * @param event Click event
+	 */
+	function addUnitFilter (unit, event) {
+		event.stopPropagation();
+		var words = input.value.split(' ');
+		// Remove all words that start with '@' character
+		var i = 0;
+		while(i < words.length){
+			if(words[i][0] === '@'){
+				words.splice(i, 1);
+			} else {
+				++i;
+			}
+		}
+		// Add new unit filter to beginning
+		words.unshift('@' + unit);
+		input.value = words.join(' ');
+		search();
+	}
+
+
+	var helpVisible = false;
+	var help = document.getElementById('help');
+	/**
+	 * Show / hide help
+	 * @param event Javascript mouse event
+	 */
+	function toggleHelp (event) {
+		if(helpVisible) {
+			help.className = '';
+		} else {
+			help.className = 'show';
+		}
+		helpVisible = !helpVisible;
+	}
+</script>
+</body>
+</html>

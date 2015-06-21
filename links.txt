@@ -1,0 +1,267 @@
+<ul>
+<li> <a href="/Abaddon_responses" title="Abaddon responses">Abaddon</a>
+</li>
+<li> <a href="/Alchemist_responses" title="Alchemist responses">Alchemist</a>
+</li>
+<li> <a href="/Ancient_Apparition_responses" title="Ancient Apparition responses">Ancient&#160;Apparition</a>
+</li>
+<li> <a href="/Anti-Mage_responses" title="Anti-Mage responses">Anti-Mage</a>
+</li>
+<li> <a href="/Axe_responses" title="Axe responses">Anti-Mage</a>
+</li>
+<li> <a href="/Bane_responses" title="Bane responses">Bane</a>
+</li>
+<li> <a href="/Batrider_responses" title="Batrider responses">Batrider</a>
+</li>
+<li> <a href="/Beastmaster_responses" title="Beastmaster responses">Beastmaster</a>
+</li>
+<li> <a href="/Bloodseeker_responses" title="Bloodseeker responses">Bloodseeker</a>
+</li>
+<li> <a href="/Bounty_Hunter_responses" title="Bounty Hunter responses">Bounty&#160;Hunter</a>
+</li>
+<li> <a href="/Brewmaster_responses" title="Brewmaster responses">Brewmaster</a>
+</li>
+<li> <a href="/Bristleback_responses" title="Bristleback responses">Bristleback</a>
+</li>
+<li> <a href="/Broodmother_responses" title="Broodmother responses">Broodmother</a>
+</li>
+<li> <a href="/Centaur_Warrunner_responses" title="Centaur Warrunner responses">Centaur&#160;Warrunner</a>
+</li>
+<li> <a href="/Chaos_Knight_responses" title="Chaos Knight responses">Chaos&#160;Knight</a>
+</li>
+<li> <a href="/Chen_responses" title="Chen responses">Chen</a>
+</li>
+<li> <a href="/Clinkz_responses" title="Clinkz responses">Clinkz</a>
+</li>
+<li> <a href="/Clockwerk_responses" title="Clockwerk responses">Clockwerk</a>
+</li>
+<li> <a href="/Crystal_Maiden_responses" title="Crystal Maiden responses">Crystal&#160;Maiden</a>
+</li>
+<li> <a href="/Dark_Seer_responses" title="Dark Seer responses">Dark Seer</a>
+</li>
+<li> <a href="/Dazzle_responses" title="Dazzle responses">Dazzle</a>
+</li>
+<li> <a href="/Death_Prophet_responses" title="Death Prophet responses">Death&#160;Prophet</a>
+</li>
+<li> <a href="/Disruptor_responses" title="Disruptor responses">Disruptor</a>
+</li>
+<li> <a href="/Doom_responses" title="Doom responses">Doom</a>
+</li>
+<li> <a href="/Dragon_Knight_responses" title="Dragon Knight responses">Dragon&#160;Knight</a>
+</li>
+<li> <a href="/Drow_Ranger_responses" title="Drow Ranger responses">Drow&#160;Ranger</a>
+</li>
+<li> <a href="/Earthshaker_responses" title="Earthshaker responses">Earthshaker</a>
+</li>
+<li> <a href="/Earth_Spirit_responses" title="Earth Spirit responses">Earth&#160;Spirit</a>
+</li>
+<li> <a href="/Elder_Titan_responses" title="Elder Titan responses">Elder Titan</a>
+</li>
+<li> <a href="/Ember_Spirit_responses" title="Ember Spirit responses">Ember Spirit</a>
+</li>
+<li> <a href="/Enchantress_responses" title="Enchantress responses">Enchantress</a>
+</li>
+<li> <a href="/Enigma_responses" title="Enigma responses">Enigma</a>
+</li>
+<li> <a href="/Faceless_Void_responses" title="Faceless Void responses">Faceless&#160;Void</a>
+</li>
+<li> <a href="/Gyrocopter_responses" title="Gyrocopter responses">Gyrocopter</a>
+</li>
+<li> <a href="/Huskar_responses" title="Huskar responses">Huskar</a>
+</li>
+<li> <a href="/Invoker_responses" title="Invoker responses">Invoker</a>
+</li>
+<li> <a href="/Io_responses" title="Io responses">Io</a>
+</li>
+<li> <a href="/Jakiro_responses" title="Jakiro responses">Jakiro</a>
+</li>
+<li> <a href="/Juggernaut_responses" title="Juggernaut responses">Juggernaut</a>
+</li>
+<li> <a href="/Keeper_of_the_Light_responses" title="Keeper of the Light responses">Keeper&#160;of&#160;the&#160;Light</a>
+</li>
+<li> <a href="/Kunkka_responses" title="Kunkka responses">Kunkka</a>
+</li>
+<li> <a href="/Legion_Commander_responses" title="Legion Commander responses">Legion&#160;Commander</a>
+</li>
+<li> <a href="/Leshrac_responses" title="Leshrac responses">Leshrac</a>
+</li>
+<li> <a href="/Lich_responses" title="Lich responses">Lich</a>
+</li>
+<li> <a href="/Lifestealer_responses" title="Lifestealer responses">Lifestealer</a>
+</li>
+<li> <a href="/Lina_responses" title="Lina responses">Lina</a>
+</li>
+<li> <a href="/Lion_responses" title="Lion responses">Lion</a>
+</li>
+<li> <a href="/Lone_Druid_responses" title="Lone Druid responses">Lone&#160;Druid</a>
+</li>
+<li> <a href="/Luna_responses" title="Luna responses">Luna</a>
+</li>
+<li> <a href="/Lycan_responses" title="Lycan responses">Lycan</a>
+</li>
+<li> <a href="/Magnus_responses" title="Magnus responses">Magnus</a>
+</li>
+<li> <a href="/Medusa_responses" title="Medusa responses">Medusa</a>
+</li>
+<li> <a href="/Meepo_responses" title="Meepo responses">Meepo</a>
+</li>
+<li> <a href="/Mirana_responses" title="Mirana responses">Mirana</a>
+</li>
+<li> <a href="/Morphling_responses" title="Morphling responses">Morphling</a>
+</li>
+<li> <a href="/Naga_Siren_responses" title="Naga Siren responses">Naga&#160;Siren</a>
+</li>
+<li> <a href="/Nature%27s_Prophet_responses" title="Nature's Prophet responses">Nature's&#160;Prophet</a>
+</li>
+<li> <a href="/Necrophos_responses" title="Necrophos responses">Necrophos</a>
+</li>
+<li> <a href="/Night_Stalker_responses" title="Night Stalker responses">Night&#160;Stalker</a>
+</li>
+<li> <a href="/Nyx_Assassin_responses" title="Nyx Assassin responses">Nyx&#160;Assassin</a>
+</li>
+<li> <a href="/Ogre_Magi_responses" title="Ogre Magi responses">Ogre&#160;Magi</a>
+</li>
+<li> <a href="/Omniknight_responses" title="Omniknight responses">Omniknight</a>
+</li>
+<li> <a href="/Oracle_responses" title="Oracle responses">Oracle</a>
+</li>
+<li> <a href="/Outworld_Devourer_responses" title="Outworld Devourer responses">Outworld&#160;Devourer</a>
+</li>
+<li> <a href="/Phantom_Assassin_responses" title="Phantom Assassin responses">Phantom&#160;Assassin</a>
+</li>
+<li> <a href="/Phantom_Lancer_responses" title="Phantom Lancer responses">Phantom&#160;Lancer</a>
+</li>
+<li> <a href="/Phoenix_responses" title="Phoenix responses">Phoenix</a>
+</li>
+<li> <a href="/Puck_responses" title="Puck responses">Puck</a>
+</li>
+<li> <a href="/Pudge_responses" title="Pudge responses">Pudge</a>
+</li>
+<li> <a href="/Pugna_responses" title="Pugna responses">Pugna</a>
+</li>
+<li> <a href="/Queen_of_Pain_responses" title="Queen of Pain responses">Queen&#160;of&#160;Pain</a>
+</li>
+<li> <a href="/Razor_responses" title="Razor responses">Razor</a>
+</li>
+<li> <a href="/Riki_responses" title="Riki responses">Riki</a>
+</li>
+<li> <a href="/Rubick_responses" title="Rubick responses">Rubick</a>
+</li>
+<li> <a href="/Sand_King_responses" title="Sand King responses">Sand&#160;King</a>
+</li>
+<li> <a href="/Shadow_Demon_responses" title="Shadow Demon responses">Shadow&#160;Demon</a>
+</li>
+<li> <a href="/Shadow_Fiend_responses" title="Shadow Fiend responses">Shadow&#160;Fiend</a>
+</li>
+<li> <a href="/Shadow_Shaman_responses" title="Shadow Shaman responses">Shadow&#160;Shaman</a>
+</li>
+<li> <a href="/Silencer_responses" title="Silencer responses">Silencer</a>
+</li>
+<li> <a href="/Skywrath_Mage_responses" title="Skywrath Mage responses">Skywrath&#160;Mage</a>
+</li>
+<li> <a href="/Slardar_responses" title="Slardar responses">Slardar</a>
+</li>
+<li> <a href="/Slark_responses" title="Slark responses">Slark</a>
+</li>
+<li> <a href="/Sniper_responses" title="Sniper responses">Sniper</a>
+</li>
+<li> <a href="/Spectre_responses" title="Spectre responses">Spectre</a>
+</li>
+<li> <a href="/Spirit_Breaker_responses" title="Spirit Breaker responses">Spirit&#160;Breaker</a>
+</li>
+<li> <a href="/Storm_Spirit_responses" title="Storm Spirit responses">Storm&#160;Spirit</a>
+</li>
+<li> <a href="/Sven_responses" title="Sven responses">Sven</a>
+</li>
+<li> <a href="/Techies_responses" title="Techies responses">Techies</a>
+</li>
+<li> <a href="/Templar_Assassin_responses" title="Templar Assassin responses">Templar&#160;Assassin</a>
+</li>
+<li> <a href="/Terrorblade_responses" title="Terrorblade responses">Terrorblade</a>
+</li>
+<li> <a href="/Tidehunter_responses" title="Tidehunter responses">Tidehunter</a>
+</li>
+<li> <a href="/Timbersaw_responses" title="Timbersaw responses">Timbersaw</a>
+</li>
+<li> <a href="/Tinker_responses" title="Tinker responses">Tinker</a>
+</li>
+<li> <a href="/Tiny_responses" title="Tiny responses">Tiny</a>
+</li>
+<li> <a href="/Treant_Protector_responses" title="Treant Protector responses">Treant&#160;Protector</a>
+</li>
+<li> <a href="/Troll_Warlord_responses" title="Troll Warlord responses">Troll&#160;Warlord</a>
+</li>
+<li> <a href="/Tusk_responses" title="Tusk responses">Tusk</a>
+</li>
+<li> <a href="/Undying_responses" title="Undying responses">Undying</a>
+</li>
+<li> <a href="/Ursa_responses" title="Ursa responses">Ursa</a>
+</li>
+<li> <a href="/Vengeful_Spirit_responses" title="Vengeful Spirit responses">Vengeful&#160;Spirit</a>
+</li>
+<li> <a href="/Venomancer_responses" title="Venomancer responses">Venomancer</a>
+</li>
+<li> <a href="/Viper_responses" title="Viper responses">Viper</a>
+</li>
+<li> <a href="/Visage_responses" title="Visage responses">Visage</a>
+</li>
+<li> <a href="/Warlock_responses" title="Warlock responses">Warlock</a>
+</li>
+<li> <a href="/Weaver_responses" title="Weaver responses">Weaver</a>
+</li>
+<li> <a href="/Windranger_responses" title="Windranger responses">Windranger</a>
+</li>
+<li> <a href="/Winter_Wyvern_responses" title="Winter Wyvern responses">Winter Wyvern</a>
+</li>
+<li> <a href="/Witch_Doctor_responses" title="Witch Doctor responses">Witch&#160;Doctor</a>
+</li>
+<li> <a href="/Wraith_King_responses" title="Wraith King responses">Wraith&#160;King</a>
+</li>
+<li> <a href="/Zeus_responses" title="Zeus responses">Zeus</a></div></td></tr><tr style="height:2px"><td></td></tr><tr><td colspan="2" style="width:100%;padding:0px;;;background:#ededed" class="navbox-list navbox-odd"><div style="padding:0em 0.25em">
+</li>
+</ul>
+Other Responses</div></td></tr><tr style="height:2px"><td></td></tr><tr><td colspan="2" style="width:100%;padding:0px;;;background:#ffffff" class="navbox-list navbox-even"><div style="padding:0em 0.25em">
+<ul>
+<li> <a href="/Announcer_responses" title="Announcer responses">Announcer</a>
+</li>
+<li> <a href="/Shopkeeper_responses" title="Shopkeeper responses">Shopkeeper</a>
+</li>
+<li> <a href="/Warlock%27s_Golem_responses" title="Warlock's Golem responses">Warlock's&#160;Golem</a></div></td></tr><tr style="height:2px"><td></td></tr><tr><td colspan="2" style="width:100%;padding:0px;;;background:#ededed" class="navbox-list navbox-odd"><div style="padding:0em 0.25em">
+</li>
+</ul>
+Announcer Packs</div></td></tr><tr style="height:2px"><td></td></tr><tr><td colspan="2" style="width:100%;padding:0px;;;background:#ffffff" class="navbox-list navbox-even"><div style="padding:0em 0.25em">
+<ul>
+<li> <a href="/Axe_Announcer_Pack" title="Axe Announcer Pack">Axe</a>
+</li>
+<li> <a href="/Bastion_Announcer_Pack" title="Bastion Announcer Pack">Bastion</a>
+</li>
+<li> <a href="/Clockwerk_Announcer_Pack" title="Clockwerk Announcer Pack">Clockwerk</a>
+</li>
+<li> <a href="/Defense_Grid_Announcer_Pack" title="Defense Grid Announcer Pack">Defense&#160;Grid</a>
+</li>
+<li> <a href="/Diretide_2012_Announcer" title="Diretide 2012 Announcer">Diretide&#160;2012&#160;(Death&#160;Prophet)</a>
+</li>
+<li> <a href="/Dr._Kleiner_Announcer_Pack" title="Dr. Kleiner Announcer Pack">Dr.&#160;Kleiner</a>
+</li>
+<li> <a href="/GLaDOS_Announcer_Pack" title="GLaDOS Announcer Pack">GLaDOS</a>
+</li>
+<li> <a href="/Greeviling_Announcer" title="Greeviling Announcer">Greeviling&#160;(Tusk)</a>
+</li>
+<li> <a href="/Juggernaut_Announcer_Pack" title="Juggernaut Announcer Pack">Juggernaut</a>
+</li>
+<li> <a href="/Lina_Announcer_Pack" title="Lina Announcer Pack">Lina</a>
+</li>
+<li> <a href="/Nature%27s_Prophet_Announcer_Pack" title="Nature's Prophet Announcer Pack">Nature's&#160;Prophet</a>
+</li>
+<li> <a href="/Pyrion_Flax_Announcer_Pack" title="Pyrion Flax Announcer Pack">Pyrion&#160;Flax</a>
+</li>
+<li> <a href="/Stanley_Parable_Announcer_Pack" title="Stanley Parable Announcer Pack">Stanley&#160;Parable</a>
+</li>
+<li> <a href="/Storm_Spirit_Announcer_Pack" title="Storm Spirit Announcer Pack">Storm&#160;Spirit</a>
+</li>
+<li> <a href="/Techies_Announcer_Pack" title="Techies Announcer Pack">Techies</a>
+</li>
+<li> <a href="/Trine_Announcer_Pack" title="Trine Announcer Pack">Trine</a>
+</li>
+<li> <a href="/The_Pirate_Cap%27n_Announcer_Pack" title="The Pirate Cap'n Announcer Pack">Pirate&#160;Captain</a></div></td></tr><tr style="height:2px;"><td></td></tr><tr><td class="navbox-abovebelow" style=";" colspan="2">
+</li>

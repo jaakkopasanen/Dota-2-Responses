@@ -1,0 +1,7 @@
+{% for response in responses %}
+<div class="list-item" onclick="play('{{ response.url }}', this, '{{ response.id }}')">
+	<span class="unit" onclick="addUnitFilter('{{ response.unit }}', event)">@{{ response.unit }}</span>
+	<span class="content">{{ response.content }}</span>
+	<div class="progress"></div>
+</div>
+{% endfor %}

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+	<title>Responses</title>
+	<style>
+		html, body {
+			font-size: 14px;
+			margin: 0;
+			font-family: sans-serif;
+		}
+		button, button:focus, button:active {
+			border: 0;
+			border-radius: 3px;
+			min-width: 56px;
+			min-height: 56px;
+			outline: none;
+			will-change: transform;
+		}
+		button:hover {
+			cursor: pointer;
+		}
+		input[type="text"], input[type="text"]:hover, input[type="text"]:focus, input[type="text"]:active {
+			outline: none;
+		}
+		.container {
+			position: relative;
+			width: 100%;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		#toolbar {
+			position: fixed;
+			top: auto; bottom: 8px;
+			left: 0; right: 0;
+			text-align: center;
+			color: white;
+		}
+		table {
+			border-spacing: 0;
+			border-collapse: separate;
+			margin: 0 8px;
+			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+		}
+		td {
+			padding: 0;
+		}
+		td.input {
+			width: 100%;
+		}
+		td.button {
+			perspective: 100px;
+		}
+		#toolbar input[type="text"] {
+			padding-left: 12px;
+			background-color: white;
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			height: 28px;
+			border: 1px solid rgba(0, 0, 0, 0.26);
+			width: 100%;
+			box-sizing: border-box;
+			min-height: 56px;
+		}
+		#toolbar button {
+			background-color: rgb(44, 75, 224);
+			color: white;
+			font-weight: bold;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+		#toolbar button:active {
+			background-color: rgb(41, 60, 161);
+		}
+		#content {
+			background-color: white;
+			margin-bottom: 72px;
+		}
+		.list-item {
+			position: relative;
+			padding: 16px 12px;
+			border-bottom: 1px solid rgba(44, 75, 224, 0.12);
+			overflow: hidden;
+		}
+		.list-item:hover {
+			cursor: pointer;
+			border-bottom: 1px solid rgba(44, 75, 224, 0.26);
+		}
+		.progress {
+			position: absolute;
+			top: auto; bottom: 0;
+			left: 0; right: 0;
+			height: 3px;
+			background-color: rgb(44, 75, 224);
+			-webkit-transform: translateX(-100%);
+			-moz-transform: translateX(-100%);
+			-ms-transform: translateX(-100%);
+			transform: translateX(-100%);
+			-webkit-transition-property: none;
+			-moz-transition-property: none;
+			-ms-transition-property: none;
+			transition-property: none;
+		}
+		.progress.play {
+			-webkit-transition-property: transform;
+			-moz-transition-property: transform;
+			transition-property: transform;
+			-ms-transition-property: transform;
+			transition-timing-function: linear;
+			-webkit-transition-timing-function: linear;
+			-moz-transition-timing-function: linear;
+			-ms-transition-timing-function: linear;
+			-webkit-transform: translateX(0);
+			-moz-transform: translateX(0);
+			-ms-transform: translateX(0);
+			transform: translateX(0);
+		}
+		.unit {
+			color: #32a6ff;
+		}
+		h1 {
+			margin-bottom: 0;
+		}
+
+		/*
+		@media (min-height: 600px){
+			#toolbar {
+				top: 8px; bottom: auto;
+			}
+			#content {
+				margin-bottom: 0;
+				margin-top: 72px;
+			}
+		}
+		*/
+	</style>
+</head>
+<body>
+<div id="content" class="container">
+	{% block content %}{% endblock %}
+</div>
+<div id="toolbar">
+	<form id="form" class="container">
+		<table>
+			<tr>
+				<td class="input"><input type="text" id="search" placeholder="What do you wish to say?" autofocus></td>
+				<td class="button"><button type="submit">Search</button></td>
+			</tr>
+		</table>
+	</form>
+	<div id="url"></div>
+</div>
+
+<script>
+	var input = document.getElementById('search'),
+	form = document.getElementById('form'),
+	content = document.getElementById('content');
+
+	var httpRequest = new XMLHttpRequest();
+	httpRequest.onreadystatechange = function (){
+		if(httpRequest.readyState === 4){
+			if(httpRequest.status === 200){
+				content.innerHTML = httpRequest.responseText;
+			}
+		}
+	};
+
+	form.addEventListener('submit', function (event){
+		event.preventDefault();
+		input.blur();
+		httpRequest.open('GET', '/search/' + input.value);
+		httpRequest.send();
+	});
+
+	var audio = new Audio(),
+	progress;
+	function play(url, el) {
+		audio.src = url;
+		if(progress) {
+			progress.className = 'progress';
+		}
+		progress = el.querySelector('.progress');
+	}
+
+	audio.addEventListener('loadedmetadata', function (){
+		progress.style.setProperty('transition-duration', audio.duration + 's');
+		progress.className = 'progress play';
+		audio.volume = 0.5;
+		audio.play();
+	});
+</script>
+</body>
+</html>
