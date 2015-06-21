@@ -25,7 +25,7 @@ swig.setDefaults({cache: false});
 /**
  * Get first response from each unit
  */
-var unitResponses = function (){
+var getUnitResponses = function (){
 	var responses = [],
 		addedUnits = [];
 
@@ -47,6 +47,16 @@ var unitResponses = function (){
 
 	return responses;
 };
+global.unitResponses = getUnitResponses();
+
+/**
+ * Responses as associative array indexed by response id
+ * @type {Array}
+ */
+global.responsesById = [];
+global.responses.forEach(function (response){
+	global.responsesById[response.id] = response;
+});
 
 /**
  * Search responses by query
@@ -114,13 +124,17 @@ var search = function (query, unit){
  * Empty search -> return unit responses
  */
 app.get('/search/', function (req, res){
-	res.render('responses', {responses: unitResponses()});
+	if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+		res.render('responses', {responses: unitResponses});
+	} else {
+		res.render('index', {responses: unitResponses});
+	}
 });
 
 /**
  * Search route with query escape for regexp
  */
-app.get('/search/:query', function (req, res){
+app.get('/search/:query(*)', function (req, res){
 	var query = req.params.query,
 		unit = '',
 		words = query.split(' ');
@@ -138,34 +152,39 @@ app.get('/search/:query', function (req, res){
 	}
 	query = words.join(' ');
 
-	res.render('responses', {responses: search(query, unit)});
-});
-
-/**
- * Get single response by response id
- */
-app.get('/:id', function (req, res){
-	for(var i = 0; i < global.responses.length; ++i){
-		if(global.responses[i].id === parseInt(req.params.id)){
-			res.render('index', {responses: [global.responses[i]]});
-			return;
-		}
+	if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+		res.render('responses', {
+			responses: search(query, unit),
+			query: req.params.query
+		});
+	} else {
+		res.render('index', {
+			responses: search(query, unit),
+			query: req.params.query
+		});
 	}
-	res.status(404).render('404', {responses: search('Lost in the woods, are you?', 'luna')});
 });
 
 /**
  * Index
  */
 app.get('/', function (req, res){
-	var ts = Date.now();
+	res.render('index', {responses: unitResponses});
+});
 
-	var responses = unitResponses();
-
-	if(process.env.NODE_ENV === 'development') {
-		console.log('GET / - ' + (Date.now() - ts) + 'ms');
+/**
+ * Get single response by response id
+ */
+app.get('/:id(*)', function (req, res){
+	var response = global.responsesById[parseInt(req.params.id)];
+	if(response){
+		res.render('index', {responses: [response]});
+	} else {
+		res.status(404).render('error', {
+			responses: search('Lost in the woods, are you?', 'luna'),
+			errorMessage: '404 - Response not found'
+		});
 	}
-	res.render('index', {responses: responses});
 });
 
 /**

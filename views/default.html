@@ -215,8 +215,12 @@
 	<form id="form" class="container">
 		<table>
 			<tr>
-				<td class="input"><input type="text" id="search" placeholder="What do you wish to say?" autofocus></td>
-				<td class="button"><button type="submit">Search</button></td>
+				<td class="input">
+					<input type="text" id="search" placeholder="What do you wish to say?"{%if query %} value="{{ query }}"{% endif %}>
+				</td>
+				<td class="button">
+					<button type="submit">Search</button>
+				</td>
 			</tr>
 		</table>
 	</form>
@@ -256,8 +260,6 @@
 </script>
 
 <script>
-	// TODO: help
-
 	/**
 	 * Initialize fast click
 	 */
