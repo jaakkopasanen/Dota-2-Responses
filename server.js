@@ -8,23 +8,44 @@
 
 var app = require('express')(),
 	swig = require('swig'),
-	fs = require('fs');
+	fs = require('fs'),
+	morgan = require('morgan'),
+	FileStreamRotator = require('file-stream-rotator');
 require('string_score');
 
 var title = 'Responses';
 
-var ts = Date.now();
+// Read database
 global.responses = JSON.parse(fs.readFileSync('dota2.json'));
-console.log('Read', global.responses.length, 'responses in', (Date.now() - ts) + 'ms');
 
+
+
+// Set up morgan logger with file stream rotator
+var logDirectory = __dirname + '/log';
+// ensure log directory exists
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+// create a rotating write stream
+var accessLogStream = FileStreamRotator.getStream({
+	filename: logDirectory + '/access-%DATE%.log',
+	frequency: 'daily',
+	verbose: false,
+	date_format: 'YYYY-MM-DD'
+});
+// setup the logger
+app.use(morgan(':date[iso] :url', {stream: accessLogStream}));
+
+
+
+// Use swig template engine
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
-
 // Disable template cache
 // TODO: enable in production
 app.set('view cache', false);
 swig.setDefaults({cache: false});
+
+
 
 /**
  * Get first response from each unit
@@ -53,6 +74,7 @@ var getUnitResponses = function (){
 };
 global.unitResponses = getUnitResponses();
 
+
 /**
  * Responses as associative array indexed by response id
  * @type {Array}
@@ -61,6 +83,7 @@ global.responsesById = [];
 global.responses.forEach(function (response){
 	global.responsesById[response.id] = response;
 });
+
 
 /**
  * Search responses by query
@@ -124,6 +147,7 @@ var search = function (query, unit){
 	return responses;
 };
 
+
 /**
  * Empty search -> return unit responses
  */
@@ -134,6 +158,7 @@ app.get('/search/', function (req, res){
 		res.render('index', {title: title, responses: unitResponses});
 	}
 });
+
 
 /**
  * Search route with query escape for regexp
@@ -170,12 +195,14 @@ app.get('/search/:query(*)', function (req, res){
 	}
 });
 
+
 /**
  * Index
  */
 app.get('/', function (req, res){
 	res.render('index', {title: title, responses: unitResponses});
 });
+
 
 /**
  * Get single response by response id
@@ -192,6 +219,7 @@ app.get('/:id(*)', function (req, res){
 		});
 	}
 });
+
 
 /**
  * Start server
