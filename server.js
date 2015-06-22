@@ -4,19 +4,23 @@
 
 'use strict';
 
-// TODO: favicon.ico
-
 var app = require('express')(),
 	swig = require('swig'),
 	fs = require('fs'),
 	morgan = require('morgan'),
-	FileStreamRotator = require('file-stream-rotator');
+	FileStreamRotator = require('file-stream-rotator'),
+	favicon = require('serve-favicon');
 require('string_score');
 
 var title = 'Responses';
 
 // Read database
 global.responses = JSON.parse(fs.readFileSync('dota2.json'));
+
+
+
+// Serve favicon.ico
+app.use(favicon(__dirname + '/favicon.ico'));
 
 
 

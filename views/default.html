@@ -280,8 +280,10 @@
 	 * Replace contents of content with received html
 	 */
 	httpRequest.onreadystatechange = function (){
+		console.log('onreadystatechange');
 		if(httpRequest.readyState === 4){
-			if(httpRequest.status === 200){
+			console.log(httpRequest.status);
+			if(httpRequest.status === 200 || httpRequest.status === 304){
 				content.innerHTML = httpRequest.responseText;
 				document.body.scrollTop = 0;
 				autoplay();
@@ -293,10 +295,10 @@
 	 * Init search with server
 	 */
 	function search () {
-		event.preventDefault();
 		input.blur();
 		httpRequest.open('GET', '/search/' + input.value);
 		httpRequest.send();
+		console.log('httpRequest sent');
 		window.history.replaceState('', '', '/');
 		document.title = 'Responses';
 	}
@@ -304,7 +306,8 @@
 	/**
 	 * Do search when user submits search form
 	 */
-	form.addEventListener('submit', function (){
+	form.addEventListener('submit', function (event){
+		event.preventDefault();
 		search();
 	});
 

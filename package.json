@@ -3,6 +3,7 @@
     "express": "^4.12.4",
     "file-stream-rotator": "0.0.6",
     "morgan": "^1.6.0",
+    "serve-favicon": "^2.3.0",
     "string_score": "^0.1.22",
     "swig": "^1.4.2"
   }
