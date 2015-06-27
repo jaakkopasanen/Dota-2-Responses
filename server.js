@@ -12,7 +12,16 @@ var app = require('express')(),
 	favicon = require('serve-favicon');
 require('string_score');
 
-var title = 'Responses';
+var conf = {};
+if(process.env.NODE_ENV === 'production') {
+	conf.port = 80;
+	conf.templateCache = true;
+} else {
+	conf.port = 3000;
+	conf.templateCache = false;
+}
+
+var title = 'Dota Responses';
 
 // Read database
 global.responses = JSON.parse(fs.readFileSync('dota2.json'));
@@ -44,10 +53,10 @@ app.use(morgan(':date[iso] :url', {stream: accessLogStream}));
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
-// Disable template cache
-// TODO: enable in production
 app.set('view cache', false);
-swig.setDefaults({cache: false});
+if(!conf.templateCache) {
+	swig.setDefaults({cache: false});
+}
 
 
 
@@ -228,7 +237,7 @@ app.get('/:id(*)', function (req, res){
 /**
  * Start server
  */
-var server = app.listen(3000, function (){
+var server = app.listen(conf.port, function (){
 	var host = server.address().address;
 	var port = server.address().port;
 	console.log('Server started at ' + host + ':' + port);
