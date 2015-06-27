@@ -9,7 +9,9 @@ var app = require('express')(),
 	fs = require('fs'),
 	morgan = require('morgan'),
 	FileStreamRotator = require('file-stream-rotator'),
-	favicon = require('serve-favicon');
+	favicon = require('serve-favicon'),
+	compression = require('compression');
+
 require('string_score');
 
 var conf = {};
@@ -26,12 +28,11 @@ var title = 'Dota Responses';
 // Read database
 global.responses = JSON.parse(fs.readFileSync('dota2.json'));
 
-
+// Enable Gzip compression
+app.use(compression());
 
 // Serve favicon.ico
 app.use(favicon(__dirname + '/favicon.ico'));
-
-
 
 // Set up morgan logger with file stream rotator
 var logDirectory = __dirname + '/log';
