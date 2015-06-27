@@ -167,9 +167,9 @@ var search = function (query, unit){
  */
 app.get('/search/', function (req, res){
 	if (req.xhr || req.headers.accept.indexOf('json') > -1) {
-		res.render('responses', {responses: unitResponses});
+		res.render('responses', {responses: global.unitResponses});
 	} else {
-		res.render('index', {title: title, responses: unitResponses});
+		res.render('index', {title: title, responses: global.unitResponses});
 	}
 });
 
@@ -214,7 +214,7 @@ app.get('/search/:query(*)', function (req, res){
  * Index
  */
 app.get('/', function (req, res){
-	res.render('index', {title: title, responses: unitResponses});
+	res.render('index', {title: title, responses: global.unitResponses});
 });
 
 
